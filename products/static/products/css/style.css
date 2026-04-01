@@ -1,0 +1,115 @@
+.hero-banner {
+    background-color: #e0fcbc;
+    border: 1px solid #e0fcbc;
+    border-radius: 24px;
+}
+
+.btn-soft {
+    background-color: #e0fcbc;
+    color: #354017;
+    border: 1px solid #e0fcbc;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-soft:hover {
+    background-color: #e0fcbc;
+    color: #354017;
+    border-color: #e0fcbc;
+}
+
+.btn-outline-custom {
+    background-color: transparent;
+    color: #6b8e23;
+    border: 1px solid #a3b18a;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-custom:hover,
+.btn-outline-custom:focus {
+    background-color: #d8f6b4;
+    color: #354017;
+    border-color: #d8f6b4;
+}
+
+.product-card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ffffff;
+    transition: transform 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+}
+
+.product-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.product-card-img img,
+.product-card-img .product-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-card-body {
+    padding: 0.55rem 0.75rem 0.75rem;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.product-card .card-title {
+    font-size: 1rem;        /* было 0.9rem — увеличили чуть больше */
+    line-height: 1.2;       /* уменьшили высоту строки для плотности */
+    margin-bottom: 0.2rem;  /* добавили небольшой отступ под названием */
+    color: #6b8e23;
+}
+
+.price-row {
+    margin-top: 0.05rem;    /* уменьшили верхний отступ, чтобы цена была ближе к названию */
+}
+
+.product-card .price {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #4c4c4c;
+    margin-top: 0;
+}
+
+.product-card .old-price {
+    display: inline-block;
+    margin-left: 0.6rem;
+    font-size: 0.78rem;
+    color: #8b8b8b;
+    text-decoration: line-through;
+}
+
+.product-card .price + .old-price {
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .product-card-img {
+        aspect-ratio: 1.18 / 1;
+    }
+}
+
+.footer-soft {
+    background-color: #e0fcbc;
+}
+

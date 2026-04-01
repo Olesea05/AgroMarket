@@ -1,0 +1,62 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="hero-banner p-5 mb-5 rounded text-center">
+
+    <h1 class="fw-bold mb-3 main-color">
+        Лучшие агротовары для вашего хозяйства
+    </h1>
+
+    <p class="text-muted mb-4">
+        Качественные препараты, проверенные продавцы и выгодные цены каждый день
+    </p>
+
+    <div class="d-flex justify-content-center gap-3">
+        <a href="#" class="btn btn-outline-custom">
+            Продавцы
+        </a>
+
+        <a href="#" class="btn btn-outline-custom">
+            Препараты
+        </a>
+    </div>
+
+</div>
+
+<!-- Новые товары -->
+<h3 class="mb-4 main-color fw-semibold">Новые товары</h3>
+
+<div class="row row-cols-2 row-cols-md-6 g-3 mb-5"> <!-- ИЗМЕНЕНО: было 5 -->
+    {% for product in new_products %}
+    <div class="col">
+        <div class="card h-100 product-card">
+
+            <div class="product-card-img">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="product-card-image" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'products/img/no-image.png' %}" class="product-card-image" alt="Нет изображения">
+                {% endif %}
+            </div>
+
+            <div class="card-body product-card-body">
+
+                <h6 class="card-title">{{ product.name }}</h6>
+                <div class="price-row">
+                    <span class="price">{{ product.price_with_discount|floatformat:2 }} MDL</span>
+                    {% if product.discount %}
+                        <span class="old-price">{{ product.original_price|floatformat:2 }} MDL</span>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

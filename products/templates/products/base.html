@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Агромаркет{% endblock %}</title>
+
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'products/css/style.css' %}?v=2">
+    <style>
+        .main-color {
+            color: #6b8e23;
+        }
+
+        .btn-custom {
+            background-color: #a3b18a;
+            color: white;
+            border-radius: 50px;
+            padding: 8px 20px;
+            border: none;
+        }
+
+        .menu-icon {
+            color: #6b8e23;
+            font-size: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .menu-icon:hover {
+            background-color: rgba(110, 142, 35, 0.12);
+            color: #4c611a;
+            text-decoration: none;
+        }
+
+        .menu-icon span {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .btn-custom:hover {
+            background-color: #8f9f74;
+        }
+
+        .menu-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .menu-link:hover {
+            color: #6b8e23;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Верхний хедер -->
+<nav class="navbar py-3">
+    <div class="container d-flex justify-content-between align-items-center gap-3">
+
+        <a class="navbar-brand fw-bold main-color" href="/" style="font-size: 2.2rem;">
+            AgroMarket
+        </a>
+
+        <form class="d-flex flex-grow-1 mx-3" style="max-width: 520px;">
+            <input class="form-control me-2 rounded-pill" type="search" placeholder="Поиск товаров">
+            <button class="btn btn-soft">Найти</button>
+        </form>
+
+        <div class="d-flex gap-2 align-items-center">
+            <a href="#" class="menu-icon" title="Личный кабинет" aria-label="Личный кабинет">
+                <i class="bi bi-person"></i>
+                <span>Личный кабинет</span>
+            </a>
+            <a href="#" class="menu-icon" title="Избранное" aria-label="Избранное">
+                <i class="bi bi-heart"></i>
+                <span>Избранное</span>
+            </a>
+            <a href="#" class="menu-icon" title="Корзина" aria-label="Корзина">
+                <i class="bi bi-cart3"></i>
+                <span>Корзина</span>
+            </a>
+            <a href="#" class="menu-icon" title="Уведомления" aria-label="Уведомления">
+                <i class="bi bi-bell"></i>
+                <span>Уведомления</span>
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- Контент -->
+<div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!-- Футер -->
+<footer class="mt-5 py-5 footer-soft">
+    <div class="container text-center">
+        <h5 class="main-color">AgroMarket</h5>
+        <p class="text-muted">Всё для сельского хозяйства в одном месте</p>
+        <small class="text-muted">© 2026 AgroMarket</small>
+    </div>
+</footer>
+
+</body>
+</html>
