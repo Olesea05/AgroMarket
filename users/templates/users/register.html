@@ -1,0 +1,31 @@
+<h2>Регистрация</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <p>Имя пользователя:</p>
+    {{ form.username }}
+
+    <p>Email:</p>
+    {{ form.email }}
+
+    <p>Пароль:</p>
+    {{ form.password }}
+
+    <p>Подтвердите пароль:</p>
+    {{ form.confirm_password }}
+
+    <p>Выберите роль:</p>
+    {{ form.role }}
+
+    <br><br>
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+<p>Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
+
+{% if form.errors %}
+    <div style="color: red;">
+        {{ form.errors }}
+    </div>
+{% endif %}

@@ -82,7 +82,14 @@
         </form>
 
         <div class="d-flex gap-2 align-items-center">
-            <a href="#" class="menu-icon" title="Личный кабинет" aria-label="Личный кабинет">
+            <a href="{% if user.is_authenticated %}
+                        {% if user.role == 'buyer' %}{% url 'buyer_dashboard' %}
+                        {% elif user.role == 'seller' %}{% url 'seller_dashboard' %}
+                        {% endif %}
+                    {% else %}
+                        {% url 'register' %}
+                    {% endif %}" 
+            class="menu-icon" title="Личный кабинет" aria-label="Личный кабинет">
                 <i class="bi bi-person"></i>
                 <span>Личный кабинет</span>
             </a>
