@@ -10,7 +10,11 @@ class RegisterForm(forms.ModelForm):
         ('buyer', 'Покупатель'),
         ('seller', 'Продавец'),
     )
-    role = forms.ChoiceField(choices=ROLE_CHOICES, initial='buyer')
+    role = forms.ChoiceField(
+        choices=ROLE_CHOICES,
+        initial='buyer',
+        widget=forms.RadioSelect(attrs={'class': 'form-check-input'})
+    )
 
     class Meta:
         model = User

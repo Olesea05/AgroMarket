@@ -1,20 +1,36 @@
-<h2>Вход в аккаунт</h2>
+{% extends 'products/base.html' %}
 
-{% if messages %}
-  <ul>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
+{% block content %}
+<div class="container mt-5" style="max-width: 480px;">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-center">Вход в аккаунт</h2>
 
-<form method="post">
-    {% csrf_token %}
-    <label>Email:</label>
-    <input type="text" name="email" required>
-    <label>Пароль:</label>
-    <input type="password" name="password" required>
-    <button type="submit">Войти</button>
-</form>
+            {% if messages %}
+                <div class="mb-3">
+                    {% for message in messages %}
+                        <div class="alert alert-warning" role="alert">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
 
-<p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label" for="id_email">Email</label>
+                    <input id="id_email" type="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="id_password">Пароль</label>
+                    <input id="id_password" type="password" name="password" class="form-control" required>
+                </div>
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-olive">Войти</button>
+                </div>
+            </form>
+
+            <p class="mt-3 text-center">Нет аккаунта? <a href="{% url 'register' %}" class="link-olive">Зарегистрироваться</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

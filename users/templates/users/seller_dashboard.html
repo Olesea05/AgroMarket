@@ -1,6 +1,10 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
 <h2>Личный кабинет продавца</h2>
 
 <p>Привет, {{ user.username }}!</p>
 
 <p>Вы вошли как продавец.</p>
-<a href="{% url 'logout' %}" class="btn btn-outline-secondary">Выйти</a>
+<a href="{% url 'logout' %}" class="btn btn-outline-custom">Выйти</a>
+{% endblock %}

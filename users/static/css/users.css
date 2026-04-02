@@ -1,0 +1,141 @@
+:root {
+    --olive: #6b8e23;
+    --olive-dark: #556b2f;
+    --olive-soft: #d8f6b4;
+    --olive-light: #eef4ca;
+}
+
+.registration-page .form-control,
+.registration-page .form-select {
+    border: 1px solid #a3b18a;
+    background-color: var(--olive-light) !important;
+    color: #333;
+}
+
+.registration-page select.form-select option,
+.registration-page select.form-select optgroup {
+    background-color: #eef4ca !important;
+    color: #333 !important;
+}
+
+.registration-page select.form-select option:checked,
+.registration-page select.form-select option[selected],
+.registration-page select.form-select option:hover,
+.registration-page select.form-select option:focus,
+.registration-page select.form-select option:active,
+.registration-page select.form-select option:focus-visible,
+.registration-page select.form-select option::selection,
+.registration-page select.form-select option::-moz-selection {
+    background-color: #7f9b33 !important;
+    color: #ffffff !important;
+}
+
+.registration-page select.form-select {
+    color: #333 !important;
+    background-color: var(--olive-light) !important;
+    outline: none !important;
+}
+
+.registration-page select.form-select:-moz-focusring {
+    color: #333 !important;
+    background-color: var(--olive-light) !important;
+}
+
+.registration-page .registration-roles .form-check {
+    margin-right: 1rem;
+}
+
+.registration-page .registration-roles .form-check-label {
+    padding: 0.55rem 0.9rem;
+    border-radius: 12px;
+    border: 1px solid #a3b18a;
+    color: #333;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.registration-page .registration-roles .form-check-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.registration-page .registration-roles .form-check-input:checked + .form-check-label {
+    background-color: #7f9b33;
+    border-color: #718a2a;
+    color: #ffffff;
+}
+
+.registration-page .registration-roles .form-check-input:hover + .form-check-label,
+.registration-page .registration-roles .form-check-label:hover {
+    background-color: #9aab5f;
+    color: #ffffff;
+}
+
+.registration-page .form-control:focus,
+.registration-page select.form-select:focus {
+    border-color: var(--olive) !important;
+    box-shadow: 0 0 0 0.2rem rgba(107, 142, 35, 0.25) !important;
+    background-color: #f3f7d9 !important;
+}
+
+input.form-control:-webkit-autofill,
+textarea.form-control:-webkit-autofill,
+select.form-select:-webkit-autofill,
+input.form-control:-webkit-autofill:focus,
+textarea.form-control:-webkit-autofill:focus,
+select.form-select:-webkit-autofill:focus {
+    background-color: var(--olive-light) !important;
+    color: #333 !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--olive-light) inset !important;
+    box-shadow: 0 0 0px 1000px var(--olive-light) inset !important;
+    -webkit-text-fill-color: #333 !important;
+}
+
+.btn-primary,
+.btn-olive {
+    background-color: #7f9b33;
+    border-color: #718a2a;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-olive:hover,
+.btn-primary:focus,
+.btn-olive:focus,
+.btn-primary:active,
+.btn-olive:active {
+    background-color: #6d8f2a;
+    border-color: #6d8f2a;
+    color: #ffffff !important;
+}
+
+.btn-olive:focus-visible,
+.btn-primary:focus-visible {
+    box-shadow: 0 0 0 0.25rem rgba(107, 142, 35, 0.25) !important;
+}
+
+.btn-olive-outline,
+.btn-outline-custom {
+    background-color: transparent;
+    color: var(--olive);
+    border-color: var(--olive);
+}
+
+.btn-olive-outline:hover,
+.btn-outline-custom:hover,
+.btn-olive-outline:focus,
+.btn-outline-custom:focus {
+    background-color: rgba(107, 142, 35, 0.12);
+    color: var(--olive-dark);
+    border-color: var(--olive-dark);
+}
+
+.link-olive,
+a.link-olive {
+    color: var(--olive) !important;
+}
+
+a:hover,
+.link-olive:hover {
+    color: var(--olive-dark) !important;
+}
