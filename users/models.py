@@ -14,3 +14,10 @@ class User(AbstractUser):
         choices=ROLE_CHOICES,
         default='buyer'
     )
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to='users/', default='users/default.png')
+
+    def __str__(self):
+        return self.user.username

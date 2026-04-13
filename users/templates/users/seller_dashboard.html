@@ -1,10 +1,69 @@
 {% extends 'products/base.html' %}
+{% load static %}
 
 {% block content %}
-<h2>Личный кабинет продавца</h2>
+<div class="container seller-dashboard" style="display: flex; gap: 3.5rem; margin-top: 2rem;">
 
-<p>Привет, {{ user.username }}!</p>
+    <!-- Левая колонка: профиль -->
+    <div style="flex: 1; max-width: 260px; padding-top: 1.5rem;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+            <img src="{{ user.profile.avatar.url }}" alt="Аватар" class="seller-avatar">
+            <h3 class="main-color">{{ user.username }}</h3>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+            <a href="#" class="btn-soft">Изменить профиль</a>
+            <a href="#" class="btn-soft">Добавить товар</a>
+            <a href="#" class="btn-soft">Отзывы</a>
+            <a href="{% url 'logout' %}" class="btn-outline-custom">Выйти</a>
+        </div>
+    </div>
 
-<p>Вы вошли как продавец.</p>
-<a href="{% url 'logout' %}" class="btn btn-outline-custom">Выйти</a>
+    <!-- Правая колонка: товары -->
+    <div style="flex: 2; display: flex; flex-direction: column; gap: 2rem; padding-left: 1rem;">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 class="main-color">Мои товары</h2>
+                <a href="#" class="link-olive">Смотреть все</a>
+            </div>
+            
+            <!-- Сетка товаров: 4 слота -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem;">
+                {% for product in products %}
+                    {% if product %}
+                        <div class="card h-100 product-card">
+                            <div class="product-card-img">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" class="product-card-image" alt="{{ product.name }}">
+                                {% else %}
+                                    <img src="{% static 'products/img/no-image.png' %}" class="product-card-image" alt="Нет изображения">
+                                {% endif %}
+                            </div>
+
+                            <div class="card-body product-card-body">
+                                <h6 class="card-title">{{ product.name }}</h6>
+                                <div class="price-row">
+                                    <span class="price">{{ product.price_with_discount|floatformat:2 }} ₽</span>
+                                    {% if product.discount %}
+                                        <span class="old-price">{{ product.original_price|floatformat:2 }} ₽</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <!-- Пустой слот -->
+                        <div class="card h-100 product-card" style="background: #f9f9f9;"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Статистика -->
+        <div class="hero-banner">
+            <div>
+                <strong>Всего товаров:</strong> {{ total_products }}
+            </div>
+            <!-- Продажи добавим позже -->
+        </div>
+    </div>
+</div>
 {% endblock %}

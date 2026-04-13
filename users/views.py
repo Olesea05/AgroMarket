@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from products.models import Product
 
 def register(request):
     if request.method == 'POST':
@@ -34,7 +35,24 @@ def buyer_dashboard(request):
 def seller_dashboard(request):
     if request.user.role != 'seller':
         return redirect('buyer_dashboard')  # или на главную
-    return render(request, 'users/seller_dashboard.html')
+
+    # Получаем последние 4 товара текущего продавца
+    latest_products = list(request.user.products.all().order_by('-id')[:4])
+
+    # Дополняем до 4 элементов None для пустых слотов
+    while len(latest_products) < 4:
+        latest_products.append(None)
+
+    # Статистика
+    total_products = request.user.products.count()
+
+    context = {
+        'user': request.user,
+        'products': latest_products,
+        'total_products': total_products,
+    }
+
+    return render(request, 'users/seller_dashboard.html', context)
 
 
 def user_login(request):

@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -24,6 +25,13 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     cultures = models.ManyToManyField(Culture, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    seller = models.ForeignKey(
+    settings.AUTH_USER_MODEL,
+    on_delete=models.CASCADE,
+    related_name='products',
+    null=True,
+    blank=True
+)
 
     def __str__(self):
         return self.name
