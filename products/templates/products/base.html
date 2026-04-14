@@ -67,7 +67,7 @@
         }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <!-- Верхний хедер -->
 <nav class="navbar py-3">
@@ -112,13 +112,13 @@
 </nav>
 
 <!-- Контент -->
-<div class="container mt-4">
+<main class="container mt-4 flex-grow-1">
     {% block content %}
     {% endblock %}
-</div>
+</main>
 
 <!-- Футер -->
-<footer class="mt-5 py-5 footer-soft">
+<footer class="mt-5 py-5 footer-soft mt-auto">
     <div class="container text-center">
         <h5 class="main-color">AgroMarket</h5>
         <p class="text-muted">Всё для сельского хозяйства в одном месте</p>

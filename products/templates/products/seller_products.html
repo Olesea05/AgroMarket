@@ -1,0 +1,70 @@
+﻿{% extends 'products/base.html' %}
+
+{% block title %}Мои товары — AgroMarket{% endblock %}
+
+{% block content %}
+<div class="seller-products-header">
+    <div class="seller-products-title">
+        <a href="#" class="seller-products-add" title="Добавить товар" aria-label="Добавить товар">
+            <i class="bi bi-plus-lg"></i>
+        </a>
+        <div>
+            <h2>Все мои товары</h2>
+            <p class="text-muted mb-0">Список всех имеющихся товаров в вашем магазине.</p>
+        </div>
+    </div>
+    <a href="#" class="btn btn-outline-custom seller-products-add-link">
+        <i class="bi bi-plus-lg"></i> Добавить товар
+    </a>
+</div>
+
+<div class="seller-products-list">
+    {% for product in products %}
+    <article class="seller-product-item">
+        <div class="product-thumb">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <div class="product-image-placeholder">
+                    <i class="bi bi-image"></i>
+                    <span>Нет фото</span>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="product-item-main">
+            <div class="product-item-top">
+                <h3 class="product-item-title">{{ product.name }}</h3>
+                <span class="product-item-badge">{{ product.quantity }} шт.</span>
+            </div>
+
+            <div class="product-item-info-row">
+                <div class="product-item-meta">
+                    <span>Категория: {{ product.category.name }}</span>
+                    <span>Наличие: {% if product.quantity > 0 %}
+                        <i class="bi bi-check-circle-fill text-success" aria-label="В наличии"></i>
+                    {% else %}
+                        <i class="bi bi-x-circle-fill text-danger" aria-label="Нет в наличии"></i>
+                    {% endif %}</span>
+                    <span>Просмотры: —</span>
+                    <span>Цена: <strong>{{ product.price_with_discount|floatformat:2 }} ₽</strong>{% if product.discount %} <small class="text-muted text-decoration-line-through">{{ product.original_price|floatformat:2 }} ₽</small>{% endif %}</span>
+                    {% if product.discount %}
+                    <span>Скидка: {{ product.discount|floatformat:2 }} %</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="product-item-status">
+            <a href="#">Изменить</a>
+            <span class="text-muted small">Добавлен: {{ product.created_at|date:"d.m.Y" }}</span>
+        </div>
+    </article>
+    {% empty %}
+    <div class="empty-seller-state">
+        <h3>У вас пока нет товаров</h3>
+        <p class="mb-0">Добавьте первый товар, чтобы начать продавать на AgroMarket.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

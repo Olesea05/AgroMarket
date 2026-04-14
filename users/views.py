@@ -39,10 +39,6 @@ def seller_dashboard(request):
     # Получаем последние 4 товара текущего продавца
     latest_products = list(request.user.products.all().order_by('-id')[:4])
 
-    # Дополняем до 4 элементов None для пустых слотов
-    while len(latest_products) < 4:
-        latest_products.append(None)
-
     # Статистика
     total_products = request.user.products.count()
 

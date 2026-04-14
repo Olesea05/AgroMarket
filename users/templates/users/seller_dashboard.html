@@ -23,38 +23,40 @@
         <div>
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2 class="main-color">Мои товары</h2>
-                <a href="#" class="link-olive">Смотреть все</a>
+                <a href="{% url 'seller_products' %}" class="link-olive">Смотреть все</a>
             </div>
             
+            {% if total_products %}
             <!-- Сетка товаров: 4 слота -->
             <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem;">
                 {% for product in products %}
-                    {% if product %}
-                        <div class="card h-100 product-card">
-                            <div class="product-card-img">
-                                {% if product.image %}
-                                    <img src="{{ product.image.url }}" class="product-card-image" alt="{{ product.name }}">
-                                {% else %}
-                                    <img src="{% static 'products/img/no-image.png' %}" class="product-card-image" alt="Нет изображения">
+                    <div class="card h-100 product-card">
+                        <div class="product-card-img">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" class="product-card-image" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="{% static 'products/img/no-image.png' %}" class="product-card-image" alt="Нет изображения">
+                            {% endif %}
+                        </div>
+
+                        <div class="card-body product-card-body">
+                            <h6 class="card-title">{{ product.name }}</h6>
+                            <div class="price-row">
+                                <span class="price">{{ product.price_with_discount|floatformat:2 }} ₽</span>
+                                {% if product.discount %}
+                                    <span class="old-price">{{ product.original_price|floatformat:2 }} ₽</span>
                                 {% endif %}
                             </div>
-
-                            <div class="card-body product-card-body">
-                                <h6 class="card-title">{{ product.name }}</h6>
-                                <div class="price-row">
-                                    <span class="price">{{ product.price_with_discount|floatformat:2 }} ₽</span>
-                                    {% if product.discount %}
-                                        <span class="old-price">{{ product.original_price|floatformat:2 }} ₽</span>
-                                    {% endif %}
-                                </div>
-                            </div>
                         </div>
-                    {% else %}
-                        <!-- Пустой слот -->
-                        <div class="card h-100 product-card" style="background: #f9f9f9;"></div>
-                    {% endif %}
+                    </div>
                 {% endfor %}
             </div>
+            {% else %}
+            <div class="empty-seller-state" style="margin-top: 1rem;">
+                <h3>У вас пока нет товаров</h3>
+                <p class="mb-0">Добавьте первый товар, чтобы начать продавать на AgroMarket.</p>
+            </div>
+            {% endif %}
         </div>
 
         <!-- Статистика -->
